@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PTecnicaPayTechModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Tareas">
+    <Key>
+      <PropertyRef Name="Id_Task" />
+    </Key>
+    <Property Name="Id_Task" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fecha_Terminada" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="PTecnicaPayTechEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tareas" EntityType="Self.Tareas" />
+    <FunctionImport Name="SP_ActualizarEstado">
+      <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CrearTarea">
+      <Parameter Name="Titulo" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Fecha_Registro" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Terminada" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EliminarTarea">
+      <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ExtraerTareaEspecifica" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTareaEspecifica_Result)">
+      <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ExtraerTareasPendientes" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTareasPendientes_Result)">
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ExtraerTareasTerminadas" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTareasTerminadas_Result)">
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ExtraerTodasTareas" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTodasTareas_Result)" />
+    <FunctionImport Name="SP_ModificarTarea">
+      <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+      <Parameter Name="Titulo" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Fecha_Registro" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Terminada" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SP_ExtraerTareaEspecifica_Result">
+    <Property Type="Int32" Name="Id_Task" Nullable="false" />
+    <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ExtraerTareasPendientes_Result">
+    <Property Type="Int32" Name="Id_Task" Nullable="false" />
+    <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ExtraerTareasTerminadas_Result">
+    <Property Type="Int32" Name="Id_Task" Nullable="false" />
+    <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ExtraerTodasTareas_Result">
+    <Property Type="Int32" Name="Id_Task" Nullable="false" />
+    <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+</Schema>

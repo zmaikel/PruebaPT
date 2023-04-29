@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PTecnicaPayTechModelStoreContainer" CdmEntityContainer="PTecnicaPayTechEntities">
+    <EntitySetMapping Name="Tareas">
+      <EntityTypeMapping TypeName="PTecnicaPayTechModel.Tareas">
+        <MappingFragment StoreEntitySet="Tareas">
+          <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+          <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_ActualizarEstado" FunctionName="PTecnicaPayTechModel.Store.SP_ActualizarEstado" />
+    <FunctionImportMapping FunctionImportName="SP_CrearTarea" FunctionName="PTecnicaPayTechModel.Store.SP_CrearTarea" />
+    <FunctionImportMapping FunctionImportName="SP_EliminarTarea" FunctionName="PTecnicaPayTechModel.Store.SP_EliminarTarea" />
+    <FunctionImportMapping FunctionImportName="SP_ExtraerTareaEspecifica" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTareaEspecifica">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTareaEspecifica_Result">
+          <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+          <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ExtraerTareasPendientes" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTareasPendientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTareasPendientes_Result">
+          <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+          <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ExtraerTareasTerminadas" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTareasTerminadas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTareasTerminadas_Result">
+          <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+          <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ExtraerTodasTareas" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTodasTareas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTodasTareas_Result">
+          <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+          <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ModificarTarea" FunctionName="PTecnicaPayTechModel.Store.SP_ModificarTarea" />
+  </EntityContainerMapping>
+</Mapping>

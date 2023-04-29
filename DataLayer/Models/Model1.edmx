@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PTecnicaPayTechModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tareas">
+          <Key>
+            <PropertyRef Name="Id_Task" />
+          </Key>
+          <Property Name="Id_Task" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="date" Nullable="false" />
+          <Property Name="Fecha_Terminada" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_ActualizarEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Task" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_CrearTarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Titulo" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Registro" Type="date" Mode="In" />
+          <Parameter Name="Fecha_Terminada" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_EliminarTarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Task" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ExtraerTareaEspecifica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Task" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ExtraerTareasPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_ExtraerTareasTerminadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_ExtraerTodasTareas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ModificarTarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Task" Type="int" Mode="In" />
+          <Parameter Name="Titulo" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Fecha_Registro" Type="date" Mode="In" />
+          <Parameter Name="Fecha_Terminada" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="PTecnicaPayTechModelStoreContainer">
+          <EntitySet Name="Tareas" EntityType="Self.Tareas" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PTecnicaPayTechModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tareas">
+          <Key>
+            <PropertyRef Name="Id_Task" />
+          </Key>
+          <Property Name="Id_Task" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Terminada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PTecnicaPayTechEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tareas" EntityType="Self.Tareas" />
+          <FunctionImport Name="SP_ActualizarEstado">
+            <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CrearTarea">
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Registro" Mode="In" Type="DateTime" />
+            <Parameter Name="Fecha_Terminada" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EliminarTarea">
+            <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ExtraerTareaEspecifica" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTareaEspecifica_Result)">
+            <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ExtraerTareasPendientes" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTareasPendientes_Result)">
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ExtraerTareasTerminadas" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTareasTerminadas_Result)">
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ExtraerTodasTareas" ReturnType="Collection(PTecnicaPayTechModel.SP_ExtraerTodasTareas_Result)" />
+          <FunctionImport Name="SP_ModificarTarea">
+            <Parameter Name="Id_Task" Mode="In" Type="Int32" />
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Fecha_Registro" Mode="In" Type="DateTime" />
+            <Parameter Name="Fecha_Terminada" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_ExtraerTareaEspecifica_Result">
+          <Property Type="Int32" Name="Id_Task" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_ExtraerTareasPendientes_Result">
+          <Property Type="Int32" Name="Id_Task" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_ExtraerTareasTerminadas_Result">
+          <Property Type="Int32" Name="Id_Task" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_ExtraerTodasTareas_Result">
+          <Property Type="Int32" Name="Id_Task" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="Fecha_Registro" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Terminada" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PTecnicaPayTechModelStoreContainer" CdmEntityContainer="PTecnicaPayTechEntities">
+          <EntitySetMapping Name="Tareas">
+            <EntityTypeMapping TypeName="PTecnicaPayTechModel.Tareas">
+              <MappingFragment StoreEntitySet="Tareas">
+                <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ActualizarEstado" FunctionName="PTecnicaPayTechModel.Store.SP_ActualizarEstado" />
+          <FunctionImportMapping FunctionImportName="SP_CrearTarea" FunctionName="PTecnicaPayTechModel.Store.SP_CrearTarea" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarTarea" FunctionName="PTecnicaPayTechModel.Store.SP_EliminarTarea" />
+          <FunctionImportMapping FunctionImportName="SP_ExtraerTareaEspecifica" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTareaEspecifica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTareaEspecifica_Result">
+                <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ExtraerTareasPendientes" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTareasPendientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTareasPendientes_Result">
+                <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ExtraerTareasTerminadas" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTareasTerminadas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTareasTerminadas_Result">
+                <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ExtraerTodasTareas" FunctionName="PTecnicaPayTechModel.Store.SP_ExtraerTodasTareas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PTecnicaPayTechModel.SP_ExtraerTodasTareas_Result">
+                <ScalarProperty Name="Id_Task" ColumnName="Id_Task" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Fecha_Terminada" ColumnName="Fecha_Terminada" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ModificarTarea" FunctionName="PTecnicaPayTechModel.Store.SP_ModificarTarea" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
